@@ -3,112 +3,355 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Anruf-Sammeltaxi Nordstormarn</title>
+<meta name="theme-color" content="#f3f4f5">
+<meta name="description" content="Informationen zum Anruf-Sammeltaxi (AST) in Reinfeld, Bad Oldesloe und Bargteheide.">
+<title>Anruf-Sammeltaxi Stormarn</title>
 <style>
+:root {
+  --yellow: #ffd500;
+  --yellow-dark: #e6bd00;
+  --ink: #252525;
+  --muted: #60656b;
+  --paper: #ffffff;
+  --background: #f1f2f3;
+  --line: #e4e6e8;
+  --red: #e52b35;
+  --shadow: 0 5px 22px rgba(25, 31, 38, .07);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-  margin:0;background:#f4f6f8;color:#222;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  color: var(--ink);
+  background: var(--background);
+  line-height: 1.6;
 }
-header {
-  background:#0a5ea8;color:white;padding:28px;text-align:center;
+a { color: inherit; }
+.site-header {
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
 }
-.container {max-width:800px;margin:auto;padding:20px;}
+.header-inner {
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 22px 24px 26px;
+}
+.logo-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 22px;
+}
+.logo-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 1px solid #ececec;
+  border-radius: 14px;
+  padding: 8px 12px;
+  height: 104px;
+  width: 220px;
+}
+.ast-logo { width: 100%; height: 100%; object-fit: contain; }
+.crest-logo { width: 100%; height: 100%; object-fit: contain; }
+.heading { text-align: center; }
+.heading h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 2.55rem);
+  line-height: 1.12;
+  letter-spacing: -.035em;
+  font-weight: 800;
+}
+.heading p { margin: 9px 0 0; color: var(--muted); font-size: 1.05rem; }
+.hero-strip {
+  margin-top: 22px;
+  background: var(--yellow);
+  border-radius: 14px;
+  padding: 13px 18px;
+  text-align: center;
+  font-weight: 750;
+  font-size: 1.05rem;
+}
+.container { max-width: 900px; margin: 0 auto; padding: 10px 22px 42px; }
 .card {
-  background:white;padding:20px;border-radius:10px;margin-top:20px;
-  box-shadow:0 2px 8px rgba(0,0,0,0.08);
+  background: var(--paper);
+  border: 1px solid rgba(25,31,38,.04);
+  border-radius: 16px;
+  padding: 24px;
+  margin-top: 18px;
+  box-shadow: var(--shadow);
 }
-h1 {margin:0;font-size:28px;}
-h2 {margin-top:0;}
-.steps li {margin-bottom:8px;}
+h2 {
+  font-size: 1.35rem;
+  margin: 0 0 14px;
+  line-height: 1.25;
+  letter-spacing: -.015em;
+}
+h3 { font-size: 1.05rem; margin: 0 0 8px; }
+p { margin: 0 0 12px; }
+p:last-child { margin-bottom: 0; }
+.intro-mark {
+  width: 42px; height: 5px; border-radius: 10px;
+  background: var(--yellow); margin-bottom: 14px;
+}
+.steps {
+  list-style: none;
+  padding: 0; margin: 0;
+  display: grid; grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 12px;
+  counter-reset: step;
+}
+.steps li {
+  counter-increment: step;
+  background: #f6f6f4;
+  border-radius: 12px;
+  padding: 15px 16px 15px 52px;
+  position: relative;
+  min-height: 76px;
+}
+.steps li::before {
+  content: counter(step);
+  position: absolute; left: 15px; top: 15px;
+  width: 25px; height: 25px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--yellow); font-weight: 800; font-size: .9rem;
+}
+.time-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; }
+.time-item {
+  background: #f6f6f4; border-radius: 12px; padding: 16px;
+}
+.time-item h3 { margin-bottom: 9px; }
+.time-item p { font-size: .95rem; margin-bottom: 4px; }
+.notice {
+  display: inline-block;
+  background: #fff3c2;
+  color: #493c00;
+  padding: 5px 9px;
+  border-radius: 7px;
+  font-size: .84rem;
+  font-weight: 700;
+  margin-top: 7px;
+}
+.tariff-top {
+  background: #fff8d9;
+  border-left: 4px solid var(--yellow);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+}
+.price-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
+.price {
+  background: #f6f6f4; border-radius: 12px; padding: 16px;
+}
+.price strong { display: block; margin-bottom: 7px; }
+.small { color: var(--muted); font-size: .88rem; }
+.line-list { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 13px; }
+.line-card {
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  padding: 17px;
+  display: flex; flex-direction: column; align-items: flex-start;
+  background: #fff;
+}
+.line-number {
+  display: inline-block;
+  background: var(--yellow);
+  padding: 3px 9px;
+  border-radius: 6px;
+  font-weight: 800;
+  font-size: .84rem;
+  margin-bottom: 10px;
+}
+.line-card h3 { min-height: 2.5em; }
 .button {
-  display:inline-block;
-  padding:12px 16px;
-  margin:6px 6px 0 0;
-  background:#0a5ea8;
-  color:white;
-  text-decoration:none;
-  border-radius:6px;
-  font-weight:600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 15px;
+  margin-top: 10px;
+  background: var(--yellow);
+  color: #171717;
+  text-decoration: none;
+  border-radius: 9px;
+  font-weight: 750;
+  transition: background .15s ease, transform .15s ease;
 }
-.small {color:#555;font-size:14px;}
+.button:hover { background: var(--yellow-dark); transform: translateY(-1px); }
+.button.secondary {
+  background: #292929; color: #fff;
+}
+.button.secondary:hover { background: #444; }
+.contact-panel {
+  background: #292929;
+  color: #fff;
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.contact-panel p { color: #dedede; margin: 4px 0 0; }
+.phone {
+  color: var(--yellow);
+  font-size: clamp(1.35rem, 3vw, 1.8rem);
+  font-weight: 850;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.social-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: .85rem;
+  padding: 24px 12px 8px;
+}
+@media (max-width: 680px) {
+  .header-inner { padding: 16px 16px 20px; }
+  .logo-row { gap: 12px; margin-bottom: 18px; }
+  .logo-card { width: 46%; height: 78px; padding: 6px; }
+  .container { padding: 4px 14px 30px; }
+  .card { padding: 19px; margin-top: 14px; border-radius: 14px; }
+  .steps, .time-grid, .line-list { grid-template-columns: 1fr; }
+  .steps li { min-height: auto; }
+  .line-card h3 { min-height: 0; }
+  .contact-panel { align-items: flex-start; flex-direction: column; }
+}
+@media (max-width: 370px) {
+  .logo-card { height: 66px; }
+  .heading p { font-size: .93rem; }
+  .price-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
 
-<header>
-<h1>Anruf-Sammeltaxi (AST)</h1>
-<p>Reinfeld · Bad Oldesloe · Bargteheide</p>
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-row">
+      <div class="logo-card">
+        <img class="ast-logo" src="ast-logo.png" alt="AST mit hvv-Logo">
+      </div>
+      <div class="logo-card">
+        <img class="crest-logo" src="wappen-stormarn.jpg" alt="Wappen des Kreises Stormarn">
+      </div>
+    </div>
+    <div class="heading">
+      <h1>Anruf-Sammeltaxi</h1>
+      <p>Reinfeld · Bad Oldesloe · Bargteheide</p>
+    </div>
+    <div class="hero-strip">Mobil unterwegs in Stormarn – einfach anrufen und einsteigen.</div>
+  </div>
 </header>
 
-<div class="container">
+<main class="container">
+  <section class="card">
+    <div class="intro-mark"></div>
+    <h2>Was ist das AST?</h2>
+    <p>Das Anruf-Sammeltaxi (AST) ist ein öffentliches Verkehrsangebot im Kreis Stormarn.
+    Es ergänzt den Busverkehr und fährt nur nach telefonischer Bestellung.
+    Der Einstieg erfolgt an festen Haltestellen, der Ausstieg ist häufig nahe der Haustür möglich.</p>
+  </section>
 
-<div class="card">
-<h2>Was ist das AST?</h2>
-<p>Das Anruf-Sammeltaxi (AST) ist ein öffentliches Verkehrsangebot im Kreis Stormarn.
-Es ergänzt den Busverkehr und fährt nur nach telefonischer Bestellung.
-Der Einstieg erfolgt an festen Haltestellen, der Ausstieg ist häufig nahe der Haustür möglich.</p>
-</div>
+  <section class="card">
+    <div class="intro-mark"></div>
+    <h2>So funktioniert die Fahrt</h2>
+    <ol class="steps">
+      <li><strong>Fahrt bestellen</strong><br>Telefonisch unter <strong>04531 / 17400</strong>, mindestens 30 Minuten vor der Abfahrt.</li>
+      <li><strong>Einstieg</strong><br>An einer AST-Haltestelle.</li>
+      <li><strong>Fahrt nach Fahrplan</strong><br>Das AST fährt meist im Stundentakt.</li>
+      <li><strong>Flexibler Ausstieg</strong><br>Häufig nahe der gewünschten Zieladresse möglich.</li>
+    </ol>
+  </section>
 
-<div class="card">
-<h2>So funktioniert die Fahrt</h2>
-<ol class="steps">
-<li><strong>Fahrt bestellen:</strong> Telefonisch unter <strong>04531 / 17400</strong> (mind. 30 Minuten vorher).</li>
-<li><strong>Einstieg:</strong> an einer AST-Haltestelle.</li>
-<li><strong>Fahrt:</strong> meist im Stundentakt nach Fahrplan.</li>
-<li><strong>Ausstieg:</strong> häufig flexibel nahe der Zieladresse möglich.</li>
-</ol>
-</div>
+  <section class="card">
+    <div class="intro-mark"></div>
+    <h2>Bedienzeiten</h2>
+    <div class="time-grid">
+      <div class="time-item">
+        <h3>Reinfeld und Umland</h3>
+        <p><strong>Mo–Fr:</strong> ca. 7–22 Uhr</p>
+        <p><strong>Sa–So:</strong> ca. 8–22 Uhr</p>
+      </div>
+      <div class="time-item">
+        <h3>Bad Oldesloe und Umland</h3>
+        <p><strong>Mo–Fr:</strong> ca. 7–22 Uhr</p>
+        <p><strong>Sa–So:</strong> ca. 8–22 Uhr</p>
+      </div>
+      <div class="time-item">
+        <h3>Bargteheide und Umland</h3>
+        <p><strong>Mo–Fr:</strong> ca. 7–22 Uhr</p>
+        <span class="notice">Keine Wochenendbedienung</span>
+      </div>
+    </div>
+  </section>
 
-<div class="card">
-<h2>Bedienzeiten</h2>
-<p><strong>Reinfeld und Umland</strong><br>
-Mo–Fr ca. 7–22 Uhr<br>
-Sa–So ca. 8–22 Uhr</p>
+  <section class="card">
+    <div class="intro-mark"></div>
+    <h2>Tarif</h2>
+    <div class="tariff-top">Deutschlandticket und hvv-Zeitkarten gelten ohne Aufpreis.</div>
+    <div class="price-grid">
+      <div class="price">
+        <strong>Preisstufe I</strong>
+        Erwachsene: ca. 3,30 €<br>
+        Kinder: ca. 2,60 €
+      </div>
+      <div class="price">
+        <strong>Preisstufe II</strong>
+        Erwachsene: ca. 3,60 €<br>
+        Kinder: ca. 2,80 €
+      </div>
+    </div>
+    <p class="small" style="margin-top:14px;">Schwerbehinderte mit entsprechendem Ausweis fahren kostenfrei gemäß hvv-Regelung.</p>
+  </section>
 
-<p><strong>Bad Oldesloe und Umland</strong><br>
-Mo–Fr ca. 7–22 Uhr<br>
-Sa–So ca. 8–22 Uhr</p>
+  <section class="card">
+    <div class="intro-mark"></div>
+    <h2>Unsere AST-Linien</h2>
+    <div class="line-list">
+      <article class="line-card">
+        <span class="line-number">Linie 8139</span>
+        <h3>Reinfeld und Umland</h3>
+        <a class="button" href="https://www.nimmbus.de/fahrplanbuch/plaene/8139H-1.htm" target="_blank" rel="noopener">Fahrplan ansehen ↗</a>
+      </article>
+      <article class="line-card">
+        <span class="line-number">Linie 8129</span>
+        <h3>Bad Oldesloe und Umland</h3>
+        <a class="button" href="https://www.nimmbus.de/fahrplanbuch/plaene/8129H-1.htm" target="_blank" rel="noopener">Fahrplan ansehen ↗</a>
+      </article>
+      <article class="line-card">
+        <span class="line-number">Linie 8119</span>
+        <h3>Bargteheide und Umland</h3>
+        <span class="notice">Keine Wochenendbedienung</span>
+        <a class="button" href="https://www.nimmbus.de/fahrplanbuch/plaene/8119H-1.htm" target="_blank" rel="noopener">Fahrplan ansehen ↗</a>
+      </article>
+    </div>
+  </section>
 
-<p><strong>Bargteheide und Umland</strong><br>
-Mo–Fr ca. 7–22 Uhr<br>
-<strong>keine Bedienung am Wochenende</strong></p>
-</div>
+  <section class="card">
+    <div class="intro-mark"></div>
+    <h2>Kontakt und weitere Informationen</h2>
+    <div class="contact-panel">
+      <div>
+        <strong>AST-Bestellung telefonisch</strong>
+        <p>Bitte mindestens 30 Minuten vor Fahrtbeginn anrufen.</p>
+      </div>
+      <a class="phone" href="tel:+49453117400">04531 / 17400</a>
+    </div>
+    <div class="social-row" style="margin-top:16px;">
+      <!-- Instagram-Link später hier bei href="#" einsetzen. -->
+      <a class="button secondary" href="#" aria-label="Instagram – Link folgt">Instagram (Link folgt)</a>
+      <a class="button secondary" href="https://www.hvv.de/" target="_blank" rel="noopener">hvv.de ↗</a>
+    </div>
+  </section>
 
-<div class="card">
-<h2>Tarif</h2>
-<p>Deutschlandticket und hvv-Zeitkarten gelten ohne Aufpreis.</p>
-
-<p><strong>Preisstufe I</strong><br>
-Erwachsene ca. 3,30 €<br>
-Kinder ca. 2,60 €</p>
-
-<p><strong>Preisstufe II</strong><br>
-Erwachsene ca. 3,60 €<br>
-Kinder ca. 2,80 €</p>
-
-<p class="small">Schwerbehinderte mit entsprechendem Ausweis fahren kostenfrei gemäß hvv-Regelung.</p>
-</div>
-
-<section>
-
-<div class="card">
-<h2>AST-Linien</h2>
-  
-<h3>Reinfeld – AST 8139</h3>
-<a class="button" href="https://www.nimmbus.de/fahrplanbuch/plaene/8139H-1.htm">Fahrplan Reinfeld</a>
-</div>
-
-<div class="card">
-<h3>Bad Oldesloe – AST 8129</h3>
-<a class="button" href="https://www.nimmbus.de/fahrplanbuch/plaene/8129H-1.htm">Fahrplan Bad Oldesloe</a>
-</div>
-
-<div class="card">
-<h3>Bargteheide – AST 8119</h3>
-<p style="font-size:0.9em;">Keine Wochenendbedienung</p>
-<a class="button" href="https://www.nimmbus.de/fahrplanbuch/plaene/8119H-1.htm">Fahrplan Bargteheide</a>
-</div>
-
-
+  <footer class="footer">
+    Anruf-Sammeltaxi im Kreis Stormarn · Reinfeld · Bad Oldesloe · Bargteheide
+  </footer>
+</main>
 </body>
 </html>
